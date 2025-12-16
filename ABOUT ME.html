@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>내가 좋아하는 것들</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        div.item:nth-child(1){background: #00afa0;}
+        div.item:nth-child(2){background: #00afa0;}
+        div.item:nth-child(3){background: #00afa0;}
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            var width = parseInt($('[data-role="slider"]').attr('data-width'), 10);
+            var height = parseInt($('[data-role="slider"]').attr('data-height'), 10);
+            var count = $('[data-role="slider"] div.item').length;
+
+            $('[data-role="slider"]').css({
+                position: 'relative',
+                overflow: 'hidden',
+                width: width + 'px',
+                height: height + 'px',
+            }).find('.container').css({
+                position: 'absolute',
+                left: '0px',
+                width: (count * width) + 'px',
+                overflow: 'hidden'
+            }).find('.item').css({
+                width: width + 'px',
+                height: height + 'px',
+                float: 'left'
+            })
+
+            var currentPage = 0;
+            var changePage = function(){
+                $('[data-role="slider"] >.container').animate({
+                    left: (-currentPage*width) + 'px'
+                },500);
+            }
+            $('#left-button').click(function(){
+                if(currentPage>0){
+                    currentPage=currentPage-1;
+                    changePage();
+                }
+            });
+            $('#right-button').click(function(){
+                if(currentPage < count -1 ){
+                    currentPage = currentPage + 1;
+                    changePage();
+                }
+            });
+
+        }
+        );
+    </script>
+</head>
+<body>
+    <div id="main-header">
+        <header class="container">
+            <div>
+                <label for="checkbox">▼</label>
+                <h1><a href="index.html">Hanbit</a></h1>
+            </div>
+            <input id="checkbox" checked="checked" type="checkbox">
+            <nav>
+                <ul>
+                    <li class="active"><a href="ABOUT ME.html">ABOUT ME</a></li>
+                    <li><a href="PROCESS & WORK.html">PROCESS & WORK</a></li>
+                    <li><a href="ACADEMIC RECORD.html">ACADEMIC RECORD</a></li>
+                    <li><a href="DREAM & FUTURE.html">DREAM & FUTURE</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <div id="main-content">
+        <article class="container">
+            <h1>ABOUT ME</h1>
+            <p>This page is about what i like</p>
+        </article>
+    </div>
+    <div id="sub-content">
+        <article class="container">
+            <div data-role="slider" data-width="500" data-height="300">
+                <button id="left-button">◀</button>
+                <button id="right-button">▶</button>
+                <div class="container">
+                <div class="item">
+                    <h1>내가 좋아하는 음식</h1>
+                    <br>
+                    <div style="display: flex; gap: 15px; align-items: center;">
+                    <img src="food.jpg" style="width: 150px; height: 120px; object-fit: cover; flex-shrink: 0;">
+                        <p style="flex: 1; font-size: 14px; line-height: 1.6; text-align: left;">제가 좋아하는 음식은 규동입니다.<br>
+                        일본의 대표적인 덮밥 요리로, 얇게 썬 소고기와 양파를 달콤짭짤한 간장 소스에 조리하여 밥 위에 올린 음식입니다.<br>
+                        규동은 간단하면서도 맛있는 한 끼 식사로, 토핑으로 올려져있는 생강절임과 같이 먹으면 느끼하지도 않고 더욱 맛있어서 좋아합니다.
+                    </p>
+                </div>
+                </div>
+                <div class="item">
+                    <h1>내가 좋아하는 음악</h1>
+                    <img src="music.jpg" style="width: 300px; height: 200px; object-fit: cover;">
+                </div>
+                <div class="item">
+                    <h1>내가 좋아하는 책</h1>
+                    <div style="display: flex; gap: 15px; align-items: center;">
+                    <img src="오만과편견.jpg" style="width: 120px; height: 180px; object-fit: cover; flex-shrink: 0;">
+                        <p style="flex: 1; font-size: 14px; line-height: 1.6; text-align: left;">제가 좋아하는 책은 오만과 편견입니다.<br>
+                        이 소설을 좋아하는 이유에는 여러가지가 있지만, 그중 가장 큰 이유는 재미라고 생각합니다.<br>
+                        고전이지만 부담없이 읽을 수 있고, 등장인물들의 개성이 뚜렷해서 쉽게 몰입할 수 있었습니다.<br>
+                        또한 책이 쓰여진 시대의 문화적인 부분을 엿볼 수 있어서 흥미로웠습니다.
+                    </p>
+                </div>
+                </div>
+            </div>
+        </article>
+    </div>
+    <div id="main-footer">
+        <footer class="container">
+            <div>202580016 임승연 자기소개</div>
+        </footer>
+    </div>
+    <div id="music-control" style="position:fixed;right:12px;bottom:12px;z-index:9999;">
+        <button id="music-toggle">Play music</button>
+    </div>
+    <script src="music.js" defer></script>
+</body>
+</html>

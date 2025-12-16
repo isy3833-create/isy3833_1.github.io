@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>202580016 임승연 포트폴리오</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main-header">
+        <header class="container">
+            <div>
+                <label for="checkbox">▼</label>
+                <h1><a href="index.html">Hanbit</a></h1>
+            </div>
+            <input id="checkbox" checked="checked" type="checkbox">
+            <nav>
+                <ul>
+                    <li><a href="ABOUT ME.html">ABOUT ME</a></li>
+                    <li class="active"><a href="PROCESS & WORK.html">PROCESS & WORK</a></li>
+                    <li><a href="ACADEMIC RECORD.html">ACADEMIC RECORD</a></li>
+                    <li><a href="DREAM & FUTURE.html">DREAM & FUTURE</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <div id="main-content">
+        <article class="container">
+            <h1>PROCESS & WORK</h1>
+            <p>This page is about codes i made</p>
+        </article>
+    </div>
+    <div id="sub-content">
+        <article class="container">
+            <table style="border-collapse:collapse; width:100%; max-width:900px; margin:0 auto;">
+                <caption style="caption-side:top; font-weight:700; margin-bottom:8px;">수업시간에 만든 암호 해독 코드</caption>
+                <thead>
+                    <tr>
+                        <th style="border:1px solid #333; padding:8px; background:#f2f2f2; text-align:center; width: 50%;">코드</th>
+                        <th style="border:1px solid #333; padding:8px; background:#f2f2f2; text-align:center; width: 50%;">설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border:1px solid #333; padding:8px; vertical-align:top;">
+            <pre style="margin:0; white-space: pre-wrap; font-family: monospace;">
+            cipher = input().strip()
+            target = "hanshin university"
+
+            x = int(input("x:"))
+            code = int(input("code:"))
+
+            if target == cipher[x::code]:
+                print("발견")
+                exit
+            else:
+                print("입력받은 x와 code가 잘못됨")
+                for x in range(len(cipher)):
+                    for code in range(-20, 21):
+                        if code == 0: 
+                            continue
+
+                        if target == cipher[x::code]:
+                            print("x =", x, "code =", code)
+                            exit
+            </pre>
+                        </td>
+                        <td style="border:1px solid #333; padding:8px; vertical-align:top;">
+                            cipher 문자열에서 시작 위치 x로부터 code의 배수 번째 글자만 진짜 암호이며, 시작 위치 x와 code가 20를 넘지 않는다는 조건일때<br><br>
+                            cipher와 x, code를 입력받고 입력받은 x와 code로 실행했을때 hanshin university가 나오지 않는다면 x와 code를 찾게 만든 코드입니다.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+    </div>
+    <div id="main-footer">
+        <footer class="container">
+            <div>202580016 임승연 자기소개</div>
+        </footer>
+    </div>
+    <div id="music-control" style="position:fixed;right:12px;bottom:12px;z-index:9999;">
+        <button id="music-toggle">Play music</button>
+    </div>
+    <script src="music.js" defer></script>
+</body>
+</html>
